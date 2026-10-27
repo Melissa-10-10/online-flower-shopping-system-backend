@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "flower_order")
-public class FlowerOrderOrder {
+public class FlowerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
