@@ -15,7 +15,7 @@ public class OutletService{
         this.outletRepository = outletRepository;
 
     }
-    public String saveOulet(Outlet outlet){
+    public String saveOutlet(Outlet outlet) {
         outletRepository.save(outlet);
         return "outlet saved successfully";
 

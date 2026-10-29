@@ -1,0 +1,69 @@
+package rw.auca.online_flower_shopping_system.controller;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import rw.auca.online_flower_shopping_system.domain.FlowerOrder;
+import rw.auca.online_flower_shopping_system.service.FlowerOrderService;
+
+@RestController
+@RequestMapping("/api/flower-orders")
+public class FlowerOrderController {
+
+    private final FlowerOrderService flowerOrderService;
+
+    public FlowerOrderController(FlowerOrderService flowerOrderService) {
+        this.flowerOrderService = flowerOrderService;
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<String> saveFlowerOrder(@RequestBody FlowerOrder flowerOrder) {
+        String result = flowerOrderService.saveFlowerOrder(flowerOrder);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<FlowerOrder>> getAll() {
+        return ResponseEntity.ok(flowerOrderService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getById(@PathVariable UUID id) {
+        Optional<FlowerOrder> result = flowerOrderService.getById(id);
+        if (result.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("The flower order with that id does not exist");
+        }
+        return ResponseEntity.ok(result.get());
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateFlowerOrder(@PathVariable UUID id, @RequestBody FlowerOrder request) {
+        String result = flowerOrderService.updateFlowerOrder(id, request);
+        if (result.equals("The flower order with that id does not exist")) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteFlowerOrder(@PathVariable UUID id) {
+        String result = flowerOrderService.deleteFlowerOrder(id);
+        if (result.equals("The flower order with that id does not exist")) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        }
+        return ResponseEntity.ok(result);
+    }
+}

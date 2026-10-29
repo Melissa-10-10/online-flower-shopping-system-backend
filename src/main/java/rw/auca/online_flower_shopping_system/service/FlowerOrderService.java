@@ -28,7 +28,7 @@ public class FlowerOrderService {
 
     }
 
-    public Optional<FlowerOrder> fetById(UUID id){
+    public Optional<FlowerOrder> getById(UUID id){
         return flowerOrderRepository.findById(id);
 
     }
