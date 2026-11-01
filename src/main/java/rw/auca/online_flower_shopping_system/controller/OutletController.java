@@ -38,6 +38,10 @@ public class OutletController {
     public ResponseEntity<List<Outlet>> getAll() {
         return ResponseEntity.ok(outletService.getAll());
     }
+    @GetMapping("/free")
+public ResponseEntity<List<Outlet>> getFreeOutlets() {
+    return ResponseEntity.ok(outletService.getFreeOutlets());
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {

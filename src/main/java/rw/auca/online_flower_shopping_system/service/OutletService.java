@@ -20,6 +20,9 @@ public class OutletService{
         return "outlet saved successfully";
 
     }
+    public List<Outlet> getFreeOutlets() {
+    return outletRepository.findFreeOutlets();
+}
     public List<Outlet> getAll(){
         return outletRepository.findAll();
     }

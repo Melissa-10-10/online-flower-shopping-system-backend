@@ -37,8 +37,8 @@ public class CustomerService {
             return "The customer with that id does not exist";
 
         }
-        customer.setfirstName(request.getfirstName());
-        customer.setlastName(request.getlastName());
+        customer.setFirstName(request.getFirstName());
+        customer.setLastName(request.getLastName());
         customer.setPhone(request.getPhone());
         customer.setAddress(request.getAddress());
         customer.setEmail(request.getEmail());

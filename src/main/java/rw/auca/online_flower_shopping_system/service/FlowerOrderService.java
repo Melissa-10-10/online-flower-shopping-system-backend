@@ -1,10 +1,13 @@
 package rw.auca.online_flower_shopping_system.service;
 
+import java.time.LocalDate;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import rw.auca.online_flower_shopping_system.domain.FlowerOrder;
+import rw.auca.online_flower_shopping_system.domain.FlowerOrderStatus;
 import rw.auca.online_flower_shopping_system.repository.FlowerOrderRepository;
 
 @Service
@@ -21,12 +24,18 @@ public class FlowerOrderService {
         
         return "Flower order saved successfully";
     }
+    public List<FlowerOrder> getBetween(LocalDate start, LocalDate end) {
+    return flowerOrderRepository.findByOrderDateBetween(start, end);
+}
 
     public List<FlowerOrder> getAll() {
 
         return flowerOrderRepository.findAll();
 
     }
+    public List<FlowerOrder> getByStatus(FlowerOrderStatus status) {
+    return flowerOrderRepository.findByStatusOrderByOrderDateAsc(status);
+}
 
     public Optional<FlowerOrder> getById(UUID id){
         return flowerOrderRepository.findById(id);

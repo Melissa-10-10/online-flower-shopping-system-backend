@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import rw.auca.online_flower_shopping_system.domain.Florist;
@@ -38,6 +39,10 @@ public class FloristController {
     public ResponseEntity<List<Florist>> getAll() {
         return ResponseEntity.ok(floristService.getAll());
     }
+    @GetMapping("/by-flower-type")
+public ResponseEntity<List<Florist>> getByFlowerType(@RequestParam String name) {
+    return ResponseEntity.ok(floristService.getByFlowerType(name));
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {

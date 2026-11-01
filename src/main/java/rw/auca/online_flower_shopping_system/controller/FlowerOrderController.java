@@ -1,5 +1,6 @@
 package rw.auca.online_flower_shopping_system.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import rw.auca.online_flower_shopping_system.domain.FlowerOrder;
+import rw.auca.online_flower_shopping_system.domain.FlowerOrderStatus;
 import rw.auca.online_flower_shopping_system.service.FlowerOrderService;
 
 @RestController
@@ -37,6 +40,17 @@ public class FlowerOrderController {
     @GetMapping("/all")
     public ResponseEntity<List<FlowerOrder>> getAll() {
         return ResponseEntity.ok(flowerOrderService.getAll());
+    }
+    @GetMapping("/between")
+public ResponseEntity<List<FlowerOrder>> getBetween(@RequestParam String start,
+                                                    @RequestParam String end) {
+    LocalDate startDate = LocalDate.parse(start);
+    LocalDate endDate = LocalDate.parse(end);
+    return ResponseEntity.ok(flowerOrderService.getBetween(startDate, endDate));
+}
+    @GetMapping("/by-status")
+    public ResponseEntity<List<FlowerOrder>> getByStatus(@RequestParam FlowerOrderStatus status) {
+    return ResponseEntity.ok(flowerOrderService.getByStatus(status));
     }
 
     @GetMapping("/{id}")

@@ -23,6 +23,9 @@ public class FloristService {
     public List<Florist> getAll(){
         return floristRepository.findAll();
     }
+    public List<Florist> getByFlowerType(String name) {
+    return floristRepository.findByFlowerTypeName(name);
+}
 
     public Optional<Florist> getById(UUID id){
         return floristRepository.findById(id);

@@ -48,6 +48,10 @@ public class FlowerTypeController {
         }
         return ResponseEntity.ok(result.get());
     }
+    @GetMapping("/unused")
+public ResponseEntity<List<FlowerType>> getUnused() {
+    return ResponseEntity.ok(flowerTypeService.getUnused());
+}
 
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateFlowerType(@PathVariable UUID id, @RequestBody FlowerType request) {

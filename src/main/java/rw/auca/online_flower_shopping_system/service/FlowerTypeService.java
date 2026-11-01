@@ -25,6 +25,9 @@ public class FlowerTypeService {
         return flowerTypeRepository.findAll();
 
     }
+    public List<FlowerType> getUnused() {
+    return flowerTypeRepository.findUnusedFlowerTypes();
+}
 
     public Optional<FlowerType> getById(UUID id){
         return flowerTypeRepository.findById(id);
