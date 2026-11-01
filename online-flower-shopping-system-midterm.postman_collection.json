@@ -1,0 +1,1876 @@
+{
+  "info": {
+    "name": "online-flower-shopping-system-midterm",
+    "description": "Student: SANGWA KAMANZI MELISSA - ID 27405. Requests named by the paper IDs (A to F and bonus). Set the collection variables (ids) from your own database before running.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Part A - CRUD",
+      "item": [
+        {
+          "name": "A - Flower type",
+          "item": [
+            {
+              "name": "A1 Save Flower type",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-types/save",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-types",
+                    "save"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Sunflowers\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A2 Get all Flower type",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-types/all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-types",
+                    "all"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Flower type by id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-types/{{flowerTypeId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-types",
+                    "{{flowerTypeId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Flower type by unknown id (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-types/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-types",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A4 Update Flower type",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-types/update/{{flowerTypeId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-types",
+                    "update",
+                    "{{flowerTypeId}}"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Daisies\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A4 Update Flower type unknown id (404)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-types/update/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-types",
+                    "update",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Daisies\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Flower type",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-types/delete/{{flowerTypeId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-types",
+                    "delete",
+                    "{{flowerTypeId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Flower type unknown id (404)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-types/delete/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-types",
+                    "delete",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "A - Outlet",
+          "item": [
+            {
+              "name": "A1 Save Outlet",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/outlets/save",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "outlets",
+                    "save"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outletNumber\": 5,\n  \"name\": \"Gisozi Outlet\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A2 Get all Outlet",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/outlets/all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "outlets",
+                    "all"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Outlet by id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/outlets/{{outletId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "outlets",
+                    "{{outletId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Outlet by unknown id (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/outlets/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "outlets",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A4 Update Outlet",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/outlets/update/{{outletId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "outlets",
+                    "update",
+                    "{{outletId}}"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outletNumber\": 5,\n  \"name\": \"Gisozi Outlet Updated\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A4 Update Outlet unknown id (404)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/outlets/update/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "outlets",
+                    "update",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outletNumber\": 5,\n  \"name\": \"Gisozi Outlet Updated\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Outlet",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/outlets/delete/{{outletId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "outlets",
+                    "delete",
+                    "{{outletId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Outlet unknown id (404)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/outlets/delete/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "outlets",
+                    "delete",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "A - Florist",
+          "item": [
+            {
+              "name": "A1 Save Florist",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/florists/save",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "florists",
+                    "save"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Florist\",\n  \"phone\": \"0788100099\",\n  \"outlet\": {\n    \"id\": \"{{outletId}}\"\n  },\n  \"flowerTypes\": [\n    {\n      \"id\": \"{{flowerTypeId}}\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A2 Get all Florist",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/florists/all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "florists",
+                    "all"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Florist by id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/florists/{{floristId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "florists",
+                    "{{floristId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Florist by unknown id (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/florists/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "florists",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A4 Update Florist",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/florists/update/{{floristId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "florists",
+                    "update",
+                    "{{floristId}}"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Florist\",\n  \"phone\": \"0788100098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A4 Update Florist unknown id (404)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/florists/update/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "florists",
+                    "update",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Florist\",\n  \"phone\": \"0788100098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Florist",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/florists/delete/{{floristId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "florists",
+                    "delete",
+                    "{{floristId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Florist unknown id (404)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/florists/delete/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "florists",
+                    "delete",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "A - Customer",
+          "item": [
+            {
+              "name": "A1 Save Customer",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/customers/save",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customers",
+                    "save"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Customer\",\n  \"phone\": \"0788200099\",\n  \"address\": \"KG 22 Ave, Kigali\",\n  \"email\": \"test@example.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A2 Get all Customer",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/customers/all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customers",
+                    "all"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Customer by id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/customers/{{customerId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customers",
+                    "{{customerId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Customer by unknown id (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/customers/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customers",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A4 Update Customer",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/customers/update/{{customerId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customers",
+                    "update",
+                    "{{customerId}}"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Customer\",\n  \"phone\": \"0788200098\",\n  \"address\": \"KG 22 Ave, Kigali\",\n  \"email\": \"test.updated@example.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A4 Update Customer unknown id (404)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/customers/update/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customers",
+                    "update",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Customer\",\n  \"phone\": \"0788200098\",\n  \"address\": \"KG 22 Ave, Kigali\",\n  \"email\": \"test.updated@example.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Customer",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/customers/delete/{{customerId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customers",
+                    "delete",
+                    "{{customerId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Customer unknown id (404)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/customers/delete/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customers",
+                    "delete",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "A - Flower order",
+          "item": [
+            {
+              "name": "A1 Save Flower order",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-orders/save",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-orders",
+                    "save"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderDate\": \"2026-12-20\",\n  \"bouquetName\": \"Test Bouquet\",\n  \"deliveryAddress\": \"KN 9 Rd, Kigali\",\n  \"customer\": {\n    \"id\": \"{{customerId}}\"\n  },\n  \"florist\": {\n    \"id\": \"{{floristId}}\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A2 Get all Flower order",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-orders/all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-orders",
+                    "all"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Flower order by id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-orders/{{orderId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-orders",
+                    "{{orderId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A3 Get Flower order by unknown id (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-orders/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-orders",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A4 Update Flower order",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-orders/update/{{orderId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-orders",
+                    "update",
+                    "{{orderId}}"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderDate\": \"2026-12-21\",\n  \"bouquetName\": \"Test Bouquet Updated\",\n  \"deliveryAddress\": \"KN 10 Rd, Kigali\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A4 Update Flower order unknown id (404)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-orders/update/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-orders",
+                    "update",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderDate\": \"2026-12-21\",\n  \"bouquetName\": \"Test Bouquet Updated\",\n  \"deliveryAddress\": \"KN 10 Rd, Kigali\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Flower order",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-orders/delete/{{orderId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-orders",
+                    "delete",
+                    "{{orderId}}"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "A5 Delete Flower order unknown id (404)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/flower-orders/delete/00000000-0000-0000-0000-000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "flower-orders",
+                    "delete",
+                    "00000000-0000-0000-0000-000000000000"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Part B - Derived queries",
+      "item": [
+        {
+          "name": "B1 Customers by last name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/by-last-name?lastName=sangwa",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "by-last-name"
+              ],
+              "query": [
+                {
+                  "key": "lastName",
+                  "value": "sangwa"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "B2 Orders by status ORDERED",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/by-status?status=ORDERED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "by-status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "ORDERED"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "B2 Orders by status DELIVERED",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/by-status?status=DELIVERED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "by-status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "DELIVERED"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "B3 Orders between dates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/between?start=2026-10-20&end=2026-10-28",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "between"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2026-10-20"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-10-28"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part C - JPQL queries",
+      "item": [
+        {
+          "name": "C1 Florists by flower type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/florists/by-flower-type?name=roses",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "florists",
+                "by-flower-type"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "roses"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "C1 Florists by flower type (none)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/florists/by-flower-type?name=orchids",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "florists",
+                "by-flower-type"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "orchids"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "C2 Free outlets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/outlets/free",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "outlets",
+                "free"
+              ]
+            }
+          }
+        },
+        {
+          "name": "C3 Unused flower types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-types/unused",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-types",
+                "unused"
+              ]
+            }
+          }
+        },
+        {
+          "name": "C4 Customers of a florist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/of-florist/{{floristId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "of-florist",
+                "{{floristId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "C4 Customers of unknown florist (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/of-florist/00000000-0000-0000-0000-000000000000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "of-florist",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part D - Business rules",
+      "item": [
+        {
+          "name": "D1 Save flower order (success)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "save"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderDate\": \"2026-12-05\",\n  \"bouquetName\": \"Christmas Roses\",\n  \"deliveryAddress\": \"KN 9 Rd, Kigali\",\n  \"customer\": {\n    \"id\": \"{{customerId}}\"\n  },\n  \"florist\": {\n    \"id\": \"{{floristId}}\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "D1 Save flower order (past date, 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "save"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderDate\": \"2026-10-05\",\n  \"bouquetName\": \"Christmas Roses\",\n  \"deliveryAddress\": \"KN 9 Rd, Kigali\",\n  \"customer\": {\n    \"id\": \"{{customerId}}\"\n  },\n  \"florist\": {\n    \"id\": \"{{floristId}}\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "D1 Save flower order (florist conflict, 409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "save"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderDate\": \"2026-11-08\",\n  \"bouquetName\": \"Christmas Roses\",\n  \"deliveryAddress\": \"KN 9 Rd, Kigali\",\n  \"customer\": {\n    \"id\": \"{{customerId}}\"\n  },\n  \"florist\": {\n    \"id\": \"{{floristId}}\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "D2 Change status ORDERED to PREPARING",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/{{orderOrderedId}}/status?status=PREPARING",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "{{orderOrderedId}}",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "PREPARING"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "D2 Invalid status change (400)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/{{orderOrderedId}}/status?status=ORDERED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "{{orderOrderedId}}",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "ORDERED"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "D2 Unknown order (404)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/00000000-0000-0000-0000-000000000000/status?status=PREPARING",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "00000000-0000-0000-0000-000000000000",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "PREPARING"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "D3 Add flower type to florist",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/florists/{{floristId}}/flower-types/{{flowerTypeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "florists",
+                "{{floristId}}",
+                "flower-types",
+                "{{flowerTypeId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "D3 Florist already has flower type (409)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/florists/{{floristId}}/flower-types/{{flowerTypeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "florists",
+                "{{floristId}}",
+                "flower-types",
+                "{{flowerTypeId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "D3 Unknown florist (404)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/florists/00000000-0000-0000-0000-000000000000/flower-types/{{flowerTypeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "florists",
+                "00000000-0000-0000-0000-000000000000",
+                "flower-types",
+                "{{flowerTypeId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "D4 Change florist outlet",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/florists/{{floristId}}/outlet?outletNumber=4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "florists",
+                "{{floristId}}",
+                "outlet"
+              ],
+              "query": [
+                {
+                  "key": "outletNumber",
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "D4 Outlet taken (409)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/florists/{{floristId2}}/outlet?outletNumber=4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "florists",
+                "{{floristId2}}",
+                "outlet"
+              ],
+              "query": [
+                {
+                  "key": "outletNumber",
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "D4 Unknown outlet (404)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/florists/{{floristId}}/outlet?outletNumber=99",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "florists",
+                "{{floristId}}",
+                "outlet"
+              ],
+              "query": [
+                {
+                  "key": "outletNumber",
+                  "value": "99"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part E - Delivery proofs",
+      "item": [
+        {
+          "name": "E1 Save delivery proof (success)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery-proofs/save?flowerOrderId={{deliveredOrderId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "delivery-proofs",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "flowerOrderId",
+                  "value": "{{deliveredOrderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"receivedBy\": \"Eric Sangwa\",\n  \"comments\": \"Delivered on time\",\n  \"rating\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "E1 Order not DELIVERED (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery-proofs/save?flowerOrderId={{orderOrderedId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "delivery-proofs",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "flowerOrderId",
+                  "value": "{{orderOrderedId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"receivedBy\": \"Eric Sangwa\",\n  \"comments\": \"Delivered on time\",\n  \"rating\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "E1 Unknown order (404)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery-proofs/save?flowerOrderId=00000000-0000-0000-0000-000000000000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "delivery-proofs",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "flowerOrderId",
+                  "value": "00000000-0000-0000-0000-000000000000"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"receivedBy\": \"Eric Sangwa\",\n  \"comments\": \"Delivered on time\",\n  \"rating\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "E2 Delivery proofs of a customer",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery-proofs/customer/0788200001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "delivery-proofs",
+                "customer",
+                "0788200001"
+              ]
+            }
+          }
+        },
+        {
+          "name": "E3 Delete flower order with proofs (409)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/delete/{{deliveredOrderId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "delete",
+                "{{deliveredOrderId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "E3 Delete delivery proof",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery-proofs/delete/{{proofId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "delivery-proofs",
+                "delete",
+                "{{proofId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "E3 Delete unknown delivery proof (404)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/delivery-proofs/delete/00000000-0000-0000-0000-000000000000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "delivery-proofs",
+                "delete",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part F - Reports and bulk update",
+      "item": [
+        {
+          "name": "F1 Orders count by status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/stats/by-status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "stats",
+                "by-status"
+              ]
+            }
+          }
+        },
+        {
+          "name": "F2 Cancel day for a florist",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/cancel-day?floristId={{floristId2}}&date=2026-11-02",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "cancel-day"
+              ],
+              "query": [
+                {
+                  "key": "floristId",
+                  "value": "{{floristId2}}"
+                },
+                {
+                  "key": "date",
+                  "value": "2026-11-02"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bonus",
+      "item": [
+        {
+          "name": "Bonus Dashboard summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/summary",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Bonus Paged flower orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/flower-orders/page?page=0&size=5&sort=orderDate,desc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "flower-orders",
+                "page"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                },
+                {
+                  "key": "sort",
+                  "value": "orderDate,desc"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:1014"
+    },
+    {
+      "key": "floristId",
+      "value": "f590d0c9-209a-4bc2-a390-a1241340103b"
+    },
+    {
+      "key": "floristId2",
+      "value": "80e3fb14-c038-4a64-8db5-c523b80ba903"
+    },
+    {
+      "key": "customerId",
+      "value": "3bce614c-e547-45b7-aaa3-a7482a7f9cf3"
+    },
+    {
+      "key": "deliveredOrderId",
+      "value": "c8d9dd06-73cf-47a5-939e-6cde4344a565"
+    },
+    {
+      "key": "orderOrderedId",
+      "value": "106f7193-e24c-4f91-9f86-946fb7fc33fe"
+    },
+    {
+      "key": "orderId",
+      "value": "PASTE-A-FLOWER-ORDER-ID"
+    },
+    {
+      "key": "flowerTypeId",
+      "value": "PASTE-A-FLOWER-TYPE-ID"
+    },
+    {
+      "key": "outletId",
+      "value": "PASTE-AN-OUTLET-ID"
+    },
+    {
+      "key": "proofId",
+      "value": "PASTE-A-DELIVERY-PROOF-ID"
+    }
+  ]
+}
