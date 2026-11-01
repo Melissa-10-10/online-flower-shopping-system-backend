@@ -18,12 +18,20 @@ public class FlowerOrderService {
         this.flowerOrderRepository = flowerOrderRepository;
     }
 
-    public String saveFlowerOrder(FlowerOrder flowerOrder){
-
-        flowerOrderRepository.save(flowerOrder);
-        
-        return "Flower order saved successfully";
+    public String saveFlowerOrder(FlowerOrder flowerOrder) {
+    if (flowerOrder.getOrderDate().isBefore(LocalDate.now())) {
+        return "Flower order date cannot be in the past";
     }
+    if (flowerOrderRepository.existsByFloristIdAndOrderDateAndStatusNot(
+            flowerOrder.getFlorist().getId(),
+            flowerOrder.getOrderDate(),
+            FlowerOrderStatus.REJECTED)) {
+        return "Florist already has an order on that date";
+    }
+    flowerOrder.setStatus(FlowerOrderStatus.ORDERED);
+    flowerOrderRepository.save(flowerOrder);
+    return "Flower order saved successfully";
+}
     public List<FlowerOrder> getBetween(LocalDate start, LocalDate end) {
     return flowerOrderRepository.findByOrderDateBetween(start, end);
 }

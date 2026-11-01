@@ -32,10 +32,16 @@ public class FlowerOrderController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> saveFlowerOrder(@RequestBody FlowerOrder flowerOrder) {
-        String result = flowerOrderService.saveFlowerOrder(flowerOrder);
-        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+public ResponseEntity<String> saveFlowerOrder(@RequestBody FlowerOrder flowerOrder) {
+    String result = flowerOrderService.saveFlowerOrder(flowerOrder);
+    if (result.equals("Flower order date cannot be in the past")) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
+    if (result.equals("Florist already has an order on that date")) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+    }
+    return ResponseEntity.status(HttpStatus.CREATED).body(result);
+}
 
     @GetMapping("/all")
     public ResponseEntity<List<FlowerOrder>> getAll() {
