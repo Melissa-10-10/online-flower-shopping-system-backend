@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 import rw.auca.online_flower_shopping_system.domain.FlowerOrder;
 import rw.auca.online_flower_shopping_system.domain.FlowerOrderStatus;
@@ -41,6 +42,18 @@ public ResponseEntity<String> saveFlowerOrder(@RequestBody FlowerOrder flowerOrd
         return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
     }
     return ResponseEntity.status(HttpStatus.CREATED).body(result);
+}
+@PatchMapping("/{id}/status")
+public ResponseEntity<String> updateStatus(@PathVariable UUID id,
+                                        @RequestParam FlowerOrderStatus status) {
+    String result = flowerOrderService.updateStatus(id, status);
+    if (result.equals("The flower order with that id does not exist")) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+    }
+    if (result.startsWith("Cannot change status")) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+    }
+    return ResponseEntity.ok(result);
 }
 
     @GetMapping("/all")

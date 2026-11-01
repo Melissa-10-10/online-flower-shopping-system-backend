@@ -32,6 +32,31 @@ public class FlowerOrderService {
     flowerOrderRepository.save(flowerOrder);
     return "Flower order saved successfully";
 }
+public String updateStatus(UUID id, FlowerOrderStatus newStatus) {
+    FlowerOrder flowerOrder = flowerOrderRepository.findById(id).orElse(null);
+    if (flowerOrder == null) {
+        return "The flower order with that id does not exist";
+    }
+
+    FlowerOrderStatus current = flowerOrder.getStatus();
+    boolean allowed = false;
+
+    if (current == FlowerOrderStatus.ORDERED) {
+        allowed = newStatus == FlowerOrderStatus.PREPARING
+            || newStatus == FlowerOrderStatus.REJECTED;
+    } else if (current == FlowerOrderStatus.PREPARING) {
+        allowed = newStatus == FlowerOrderStatus.DELIVERED
+            || newStatus == FlowerOrderStatus.REJECTED;
+    }
+
+    if (!allowed) {
+        return "Cannot change status from " + current + " to " + newStatus;
+    }
+
+    flowerOrder.setStatus(newStatus);
+    flowerOrderRepository.save(flowerOrder);
+    return "Flower order status updated successfully";
+}
     public List<FlowerOrder> getBetween(LocalDate start, LocalDate end) {
     return flowerOrderRepository.findByOrderDateBetween(start, end);
 }
