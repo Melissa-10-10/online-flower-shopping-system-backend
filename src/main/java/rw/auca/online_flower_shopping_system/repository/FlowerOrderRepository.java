@@ -41,6 +41,8 @@ int cancelDay(@Param("floristId") UUID floristId,
             @Param("date") LocalDate date,
             @Param("rejected") FlowerOrderStatus rejected,
             @Param("delivered") FlowerOrderStatus delivered);
+long countByOrderDate(LocalDate orderDate);
+            
 
     boolean existsByFloristIdAndOrderDateAndStatusNot(UUID floristId, LocalDate orderDate, FlowerOrderStatus status);
 }

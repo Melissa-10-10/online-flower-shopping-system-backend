@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page; 
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -100,6 +102,10 @@ public ResponseEntity<List<FlowerOrder>> getBetween(@RequestParam String start,
         }
         return ResponseEntity.ok(result);
     }
+    @GetMapping("/page")
+public ResponseEntity<Page<FlowerOrder>> getPage(Pageable pageable) {
+    return ResponseEntity.ok(flowerOrderService.getPage(pageable));
+}
 
     @DeleteMapping("/delete/{id}")
 public ResponseEntity<String> deleteFlowerOrder(@PathVariable UUID id) {

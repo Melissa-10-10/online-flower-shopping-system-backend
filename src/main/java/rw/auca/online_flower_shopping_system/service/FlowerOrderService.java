@@ -7,6 +7,8 @@ import java.util.UUID;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page; 
+import org.springframework.data.domain.Pageable;
 import rw.auca.online_flower_shopping_system.domain.FlowerOrder;
 import rw.auca.online_flower_shopping_system.domain.FlowerOrderStatus;
 import rw.auca.online_flower_shopping_system.repository.DeliveryProofRepository;
@@ -102,6 +104,9 @@ public String cancelDay(UUID floristId, LocalDate date) {
         return "flower order saved successfully";
     
     }
+    public Page<FlowerOrder> getPage(Pageable pageable) {
+    return flowerOrderRepository.findAll(pageable);
+}
 
     public String deleteFlowerOrder(UUID id) {
     FlowerOrder flowerOrder = flowerOrderRepository.findById(id).orElse(null);
