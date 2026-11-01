@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import rw.auca.online_flower_shopping_system.domain.Customer;
 import rw.auca.online_flower_shopping_system.service.CustomerService;
@@ -39,6 +40,10 @@ public class CustomerController {
 @GetMapping("/{id}")
     public ResponseEntity<?>getById(@PathVariable UUID id){
         return ResponseEntity.ok(customerService.getById(id));
+    }
+    @GetMapping("/by-last-name")
+    public ResponseEntity<List<Customer>> getByLastName(@RequestParam String lastName) {
+    return ResponseEntity.ok(customerService.getByLastName(lastName));
     }
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateCustomer(@PathVariable UUID id, @RequestBody Customer request){

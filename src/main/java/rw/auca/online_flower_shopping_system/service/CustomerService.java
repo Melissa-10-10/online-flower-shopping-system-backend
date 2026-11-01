@@ -24,6 +24,9 @@ public class CustomerService {
     public List<Customer> getAll(){
         return customerRepository.findAll();
     }
+    public List<Customer> getByLastName(String lastName) {
+    return customerRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+}
     public Optional<Customer> getById(UUID id){
         return customerRepository.findById(id);
     

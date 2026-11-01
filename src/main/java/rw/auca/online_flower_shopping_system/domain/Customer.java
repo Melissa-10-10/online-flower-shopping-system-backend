@@ -31,6 +31,8 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
+
+
     public UUID getId(){
         return id;
         
@@ -62,14 +64,14 @@ public class Customer {
     }
     public String getEmail(){
         return email;
-    }   
+    }
     public void setEmail(String email){
         this.email = email;
     }
-
-
-    
-
-    
-
 }
+
+
+    
+
+    
+
