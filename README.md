@@ -38,6 +38,3 @@ outlets, florists, customers, flower orders and delivery proofs.
 Import `online-flower-shopping-system-midterm.postman_collection.json`
 from the root of this repository to test every endpoint.
 
-## Postman
-Import `online-flower-shopping-system-midterm.postman_collection.json`
-from the root of this repository to test every endpoint.
