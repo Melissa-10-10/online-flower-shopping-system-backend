@@ -26,10 +26,10 @@ public class Florist {
     @GeneratedValue(strategy = GenerationType.UUID)
         private UUID id;
     
-    @Column(name = "first-name")    
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last-name")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "phone")
