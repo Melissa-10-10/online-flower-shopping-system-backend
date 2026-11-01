@@ -55,6 +55,16 @@ public ResponseEntity<String> updateStatus(@PathVariable UUID id,
     }
     return ResponseEntity.ok(result);
 }
+@PatchMapping("/cancel-day")
+public ResponseEntity<String> cancelDay(@RequestParam UUID floristId,
+                                        @RequestParam String date) {
+    LocalDate day = LocalDate.parse(date);
+    return ResponseEntity.ok(flowerOrderService.cancelDay(floristId, day));
+}
+@GetMapping("/stats/by-status")
+public ResponseEntity<List<Object[]>> getStatsByStatus() {
+    return ResponseEntity.ok(flowerOrderService.getStatsByStatus());
+}
 
     @GetMapping("/all")
     public ResponseEntity<List<FlowerOrder>> getAll() {
@@ -92,11 +102,14 @@ public ResponseEntity<List<FlowerOrder>> getBetween(@RequestParam String start,
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteFlowerOrder(@PathVariable UUID id) {
-        String result = flowerOrderService.deleteFlowerOrder(id);
-        if (result.equals("The flower order with that id does not exist")) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
-        }
-        return ResponseEntity.ok(result);
+public ResponseEntity<String> deleteFlowerOrder(@PathVariable UUID id) {
+    String result = flowerOrderService.deleteFlowerOrder(id);
+    if (result.equals("The flower order with that id does not exist")) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
     }
+    if (result.startsWith("That flower order has delivery proofs")) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+    }
+    return ResponseEntity.ok(result);
+}
 }

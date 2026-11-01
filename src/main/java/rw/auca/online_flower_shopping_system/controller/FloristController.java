@@ -40,10 +40,12 @@ public class FloristController {
     public ResponseEntity<List<Florist>> getAll() {
         return ResponseEntity.ok(floristService.getAll());
     }
+
+    // C1
     @GetMapping("/by-flower-type")
-public ResponseEntity<List<Florist>> getByFlowerType(@RequestParam String name) {
-    return ResponseEntity.ok(floristService.getByFlowerType(name));
-}
+    public ResponseEntity<List<Florist>> getByFlowerType(@RequestParam String name) {
+        return ResponseEntity.ok(floristService.getByFlowerType(name));
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {
@@ -54,18 +56,6 @@ public ResponseEntity<List<Florist>> getByFlowerType(@RequestParam String name) 
         }
         return ResponseEntity.ok(result.get());
     }
-    @PatchMapping("/{floristId}/outlet")
-public ResponseEntity<String> changeOutlet(@PathVariable UUID floristId,
-                                        @RequestParam int outletNumber) {
-    String result = floristService.changeOutlet(floristId, outletNumber);
-    if (result.endsWith("does not exist")) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
-    }
-    if (result.equals("That outlet is taken by another florist")) {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
-    }
-    return ResponseEntity.ok(result);
-}
 
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateFlorist(@PathVariable UUID id, @RequestBody Florist request) {
@@ -81,6 +71,34 @@ public ResponseEntity<String> changeOutlet(@PathVariable UUID floristId,
         String result = floristService.deleteFlorist(id);
         if (result.equals("The florist with that id does not exist")) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    // D3
+    @PutMapping("/{floristId}/flower-types/{flowerTypeId}")
+    public ResponseEntity<String> addFlowerType(@PathVariable UUID floristId,
+                                                @PathVariable UUID flowerTypeId) {
+        String result = floristService.addFlowerType(floristId, flowerTypeId);
+        if (result.endsWith("does not exist")) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        }
+        if (result.equals("The florist already has that flower type")) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    // D4
+    @PatchMapping("/{floristId}/outlet")
+    public ResponseEntity<String> changeOutlet(@PathVariable UUID floristId,
+                                            @RequestParam int outletNumber) {
+        String result = floristService.changeOutlet(floristId, outletNumber);
+        if (result.endsWith("does not exist")) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        }
+        if (result.equals("That outlet is taken by another florist")) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
         }
         return ResponseEntity.ok(result);
     }

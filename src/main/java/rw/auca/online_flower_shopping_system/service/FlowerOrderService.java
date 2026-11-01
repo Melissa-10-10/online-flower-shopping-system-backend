@@ -6,17 +6,22 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rw.auca.online_flower_shopping_system.domain.FlowerOrder;
 import rw.auca.online_flower_shopping_system.domain.FlowerOrderStatus;
+import rw.auca.online_flower_shopping_system.repository.DeliveryProofRepository;
 import rw.auca.online_flower_shopping_system.repository.FlowerOrderRepository;
 
 @Service
 public class FlowerOrderService {
     private final FlowerOrderRepository flowerOrderRepository;
+private final DeliveryProofRepository deliveryProofRepository;
 
-    public FlowerOrderService(FlowerOrderRepository flowerOrderRepository){
-        this.flowerOrderRepository = flowerOrderRepository;
-    }
+public FlowerOrderService(FlowerOrderRepository flowerOrderRepository,
+                        DeliveryProofRepository deliveryProofRepository) {
+    this.flowerOrderRepository = flowerOrderRepository;
+    this.deliveryProofRepository = deliveryProofRepository;
+}
 
     public String saveFlowerOrder(FlowerOrder flowerOrder) {
     if (flowerOrder.getOrderDate().isBefore(LocalDate.now())) {
@@ -60,6 +65,15 @@ public String updateStatus(UUID id, FlowerOrderStatus newStatus) {
     public List<FlowerOrder> getBetween(LocalDate start, LocalDate end) {
     return flowerOrderRepository.findByOrderDateBetween(start, end);
 }
+public List<Object[]> getStatsByStatus() {
+    return flowerOrderRepository.countByStatus();
+}
+@Transactional
+public String cancelDay(UUID floristId, LocalDate date) {
+    int count = flowerOrderRepository.cancelDay(
+            floristId, date, FlowerOrderStatus.REJECTED, FlowerOrderStatus.DELIVERED);
+    return count + " flower orders cancelled";
+}
 
     public List<FlowerOrder> getAll() {
 
@@ -90,12 +104,14 @@ public String updateStatus(UUID id, FlowerOrderStatus newStatus) {
     }
 
     public String deleteFlowerOrder(UUID id) {
-        FlowerOrder flowerOrder = flowerOrderRepository.findById(id).orElse(null);
-        if (flowerOrder == null) {
-            return "order with that id does not exist";
-        }
-        flowerOrderRepository.delete(flowerOrder);
-        return "Flower order deleted successfully";
+    FlowerOrder flowerOrder = flowerOrderRepository.findById(id).orElse(null);
+    if (flowerOrder == null) {
+        return "The flower order with that id does not exist";
     }
-
+    if (deliveryProofRepository.existsByFlowerOrderId(id)) {
+        return "That flower order has delivery proofs, delete them first";
+    }
+    flowerOrderRepository.delete(flowerOrder);
+    return "Flower order deleted successfully";
+}
 }
